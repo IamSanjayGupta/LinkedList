@@ -57,6 +57,29 @@ class LinkedList {
       }
       this.head = prev;
    }
+
+   addNodeToKthPosition(position, data) {
+      if (position < 1) return false;
+      let curr = this.head;
+      let prev = null;
+      while (position > 1 && curr !== null) {
+         prev = curr;
+         curr = curr.next;
+         position--;
+      }
+      if (curr == null && position > 1) return false;
+      let node = new Node(data);
+      if (prev == null) {
+         node.next = curr;
+         this.head = node;
+      } else {
+         prev.next = node;
+         node.next = curr;
+      }
+
+      return true;
+   }
+
    //delete List
    deleteList() {
       this.head = null;
