@@ -3,10 +3,10 @@ let list = new LinkedList();
 let inputValue = document.getElementById("inputVal");
 let option = document.querySelector("#linkedListOption");
 option.addEventListener("change", () => {
-   if (+option.value == 2) {
+   if (option.value == 2) {
       inputValue.placeholder = `Enter comma seperated data\n(Ex. 1,2,3,4)`;
       inputValue.style.display = "block";
-   } else if (+option.value == 3) {
+   } else if (option.value == 3 || option.value == 4) {
       inputValue.placeholder = `Enter Position, Data. Ex.\n2,55`;
       inputValue.style.display = "block";
    } else {
@@ -36,7 +36,14 @@ function operation() {
             .trim()
             .split(",")
             .map((el) => el.trim());
-         console.log(list.addNodeToKthPosition(arr[0], arr[1]));
+         if (!list.addNodeToKthPosition(arr[0], arr[1])) alert("Invalid Position");
+         break;
+      case 4:
+         arr = data
+            .trim()
+            .split(",")
+            .map((el) => el.trim());
+         if (!list.changeKthNodeData(arr[0], arr[1])) alert("Invalid Position");
          break;
       case 6:
          list.reverseList();

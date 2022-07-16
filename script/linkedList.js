@@ -59,7 +59,7 @@ class LinkedList {
    }
 
    addNodeToKthPosition(position, data) {
-      if (position < 1) return false;
+      if (position < 1 || this.head == null) return false;
       let curr = this.head;
       let prev = null;
       while (position > 1 && curr !== null) {
@@ -68,6 +68,7 @@ class LinkedList {
          position--;
       }
       if (curr == null && position > 1) return false;
+      // console.log(curr, prev, position);
       let node = new Node(data);
       if (prev == null) {
          node.next = curr;
@@ -80,6 +81,18 @@ class LinkedList {
       return true;
    }
 
+   changeKthNodeData(position, data) {
+      if (position < 1 || this.head == null) return false;
+      let curr = this.head;
+      while (position > 1 && curr !== null) {
+         curr = curr.next;
+         position--;
+      }
+      if (curr == null && position > 0) return false;
+      // console.log(curr, prev, position)
+      curr.data = data;
+      return true;
+   }
    //delete List
    deleteList() {
       this.head = null;
