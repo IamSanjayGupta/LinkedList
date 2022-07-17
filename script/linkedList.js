@@ -93,6 +93,24 @@ class LinkedList {
       curr.data = data;
       return true;
    }
+
+   //Delete kth Node
+   deleteKthNode(position) {
+      if (position < 1 || this.head == null) return false;
+      let curr = this.head;
+      let prev = null;
+      while (position > 1 && curr !== null) {
+         prev = curr;
+         curr = curr.next;
+         position--;
+      }
+      if (curr == null && position > 1) return false;
+      // console.log(curr, prev, position);
+      prev.next = curr.next;
+
+      return true;
+   }
+
    //delete List
    deleteList() {
       this.head = null;
@@ -103,12 +121,15 @@ class LinkedList {
       container.innerHTML = "";
 
       let curr = this.head;
+      let i = 1;
       while (curr !== null) {
          let div = document.createElement("div");
          div.innerText = curr.data;
+         div.setAttribute("style", `--order: ${i++}`);
          container.append(div);
          if (curr.next !== null) {
             let span = document.createElement("span");
+            span.setAttribute("style", `--order: ${i}`);
             container.append(span);
          }
          curr = curr.next;

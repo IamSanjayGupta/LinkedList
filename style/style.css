@@ -22,39 +22,60 @@
 .displayContainer > div {
    height: 60px;
    width: 100px;
-   background-color: green;
    display: flex;
    justify-content: center;
    align-items: center;
    font-size: 30px;
+   color: transparent;
    transition: all 0.5s ease-in-out;
+   animation: displayNode 2s linear forwards;
+   animation-delay: calc(var(--order) * 100ms);
+}
+@keyframes displayNode {
+   from {
+      background-color: yellow;
+   }
+   to {
+      color: black;
+      background-color: green;
+   }
+}
+.displayContainer > span {
+   width: 45px;
+   height: 0px;
+   line-height: 100px;
+   animation: displayLink 2s linear forwards;
+   animation-delay: calc(var(--order) * 100ms);
+}
+
+@keyframes displayLink {
+   from {
+      border: 1px dotted red;
+   }
+   to {
+      border: 1px dotted red;
+   }
 }
 .displayContainer > div:hover {
    transform: rotate(360deg);
    border-radius: 50%;
 }
-span {
-   width: 45px;
-   height: 0px;
-   line-height: 100px;
-   border: 1px dotted red;
-}
-
 .displayContainer div:first-child {
    background-color: rgb(255, 81, 0);
-   animation: headandlast 3s linear 0s infinite;
+   color: black;
+   animation: headandlast 3s linear 1s infinite;
 }
-.displayContainer div:last-child {
+/* .displayContainer div:last-child {
    background-color: rgb(0, 119, 255);
-   animation: headandlast 3s linear 0s infinite;
-}
+   animation: headandlast 3s linear 1s infinite;
+} */
 
 @keyframes headandlast {
    0% {
       font-size: 30px;
    }
    50% {
-      font-size: 40px;
+      font-size: 35px;
       background-color: rgb(255, 255, 255);
    }
    100% {

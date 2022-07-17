@@ -47,7 +47,6 @@ function operation() {
          break;
       case 6:
          list.reverseList();
-         console.log(list);
          break;
       default:
          list.deleteList();
