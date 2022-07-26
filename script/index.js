@@ -1,13 +1,18 @@
 import { LinkedList } from "./linkedList.js";
+
 let list = new LinkedList();
 let inputValue = document.getElementById("inputVal");
 let option = document.querySelector("#linkedListOption");
 option.addEventListener("change", () => {
+   inputValue.placeholder = "";
    if (option.value == 2) {
       inputValue.placeholder = `Enter comma seperated data\n(Ex. 1,2,3,4)`;
       inputValue.style.display = "block";
    } else if (option.value == 3 || option.value == 4) {
       inputValue.placeholder = `Enter Position, Data. Ex.\n2,55`;
+      inputValue.style.display = "block";
+   } else if (option.value == 5) {
+      inputValue.placeholder = `Enter Position. Ex.\n2`;
       inputValue.style.display = "block";
    } else {
       inputValue.style.display = "none";
@@ -21,7 +26,7 @@ function operation() {
    switch (+option.value) {
       case 1:
          list.deleteList();
-         list.createRandomList(10);
+         list.createRandomList(15);
          break;
 
       case 2:
@@ -45,12 +50,15 @@ function operation() {
             .map((el) => el.trim());
          if (!list.changeKthNodeData(arr[0], arr[1])) alert("Invalid Position");
          break;
+      case 5:
+         if (!list.deleteKthNode(+data.trim())) alert("Invalid Position");
+         break;
       case 6:
          list.reverseList();
          break;
       default:
          list.deleteList();
-         list.createRandomList(10);
+         list.createRandomList(5);
          console.log("default");
    }
 

@@ -99,16 +99,28 @@ class LinkedList {
       if (position < 1 || this.head == null) return false;
       let curr = this.head;
       let prev = null;
-      while (position > 1 && curr !== null) {
+      let count = 1;
+      while (count !== position && curr.next !== null) {
          prev = curr;
          curr = curr.next;
-         position--;
+         count++;
       }
-      if (curr == null && position > 1) return false;
-      // console.log(curr, prev, position);
-      prev.next = curr.next;
+      console.log(curr, prev, position, count);
 
-      return true;
+      if (count < position) {
+         return false;
+      } else {
+         if (prev == null) {
+            this.head = this.head.next;
+         } else {
+            if (curr.next == null) {
+               prev.next = null;
+            } else {
+               prev.next = curr.next;
+            }
+         }
+         return true;
+      }
    }
 
    //delete List
