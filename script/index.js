@@ -71,6 +71,12 @@ function operation() {
             alert("First Create Linkedlist");
          }
          break;
+      case 8:
+         list.firstHalf();
+         break;
+      case 9:
+         list.lastHalf();
+         break;
       default:
          list.deleteList();
          list.createRandomList(5);

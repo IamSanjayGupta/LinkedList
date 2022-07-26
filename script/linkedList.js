@@ -134,9 +134,55 @@ class LinkedList {
       return Math.ceil(middle / 2);
    }
 
+   //firstHalf
+   firstHalf() {
+      if (this.head == null) return false;
+      let curr = this.head;
+      let count = 0;
+      while (curr !== null) {
+         curr = curr.next;
+         count++;
+      }
+      let mid = Math.ceil(count / 2);
+      curr = this.head;
+      while (mid > 1) {
+         curr = curr.next;
+         mid--;
+      }
+      curr.next = null;
+      return true;
+   }
+
+   //lastHalf
+   lastHalf() {
+      if (this.head == null) return false;
+      let mid = Math.ceil(this.totalNode() / 2);
+      if (mid == 1) {
+         this.head.next = null;
+         return true;
+      }
+      let curr = this.head;
+      while (mid > 1) {
+         curr = curr.next;
+         mid--;
+      }
+      this.head = curr;
+      return true;
+   }
+
    //delete List
    deleteList() {
       this.head = null;
+   }
+
+   totalNode() {
+      let curr = this.head;
+      let count = 0;
+      while (curr !== null) {
+         curr = curr.next;
+         count++;
+      }
+      return count;
    }
 
    displayList() {
