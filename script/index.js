@@ -51,7 +51,14 @@ function operation() {
          if (!list.changeKthNodeData(arr[0], arr[1])) alert("Invalid Position");
          break;
       case 5:
-         if (!list.deleteKthNode(+data.trim())) alert("Invalid Position");
+         if (list.deleteKthNode(+data.trim())) {
+            setTimeout(() => {
+               document.querySelector(".displayContainer > div:nth-child(3)").classList.add("highlight");
+            }, 1000);
+         } else {
+            alert("Invalid Position");
+         }
+
          break;
       case 6:
          list.reverseList();
@@ -59,6 +66,7 @@ function operation() {
       default:
          list.deleteList();
          list.createRandomList(5);
+         list.displayList();
          console.log("default");
    }
 

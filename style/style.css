@@ -18,6 +18,7 @@
    row-gap: 30px;
    margin-top: 20px;
    padding: 20px;
+   counter-reset: nodePosition;
 }
 .displayContainer > div {
    height: 60px;
@@ -26,7 +27,9 @@
    justify-content: center;
    align-items: center;
    font-size: 30px;
+   font-weight: bolder;
    color: transparent;
+   position: relative;
    transition: all 0.5s ease-in-out;
    animation: displayNode 2s linear forwards;
    animation-delay: calc(var(--order) * 100ms);
@@ -40,6 +43,19 @@
       color: black;
       background-color: green;
    }
+}
+.displayContainer > div::after {
+   position: absolute;
+   top: 0px;
+   left: 5px;
+   font-size: 15px;
+   color: white;
+   counter-increment: nodePosition;
+   content: counter(nodePosition);
+}
+.displayContainer > div:hover {
+   transform: rotate(360deg);
+   border-radius: 50%;
 }
 .displayContainer > span {
    width: 45px;
@@ -67,10 +83,7 @@
       border: 1px dotted red;
    }
 }
-.displayContainer > div:hover {
-   transform: rotate(360deg);
-   border-radius: 50%;
-}
+
 .displayContainer div:first-child {
    background-color: rgb(255, 81, 0);
    color: black;
@@ -118,5 +131,6 @@ textarea {
 }
 
 .highlight {
+   transform: scale(1.1);
    background-color: red;
 }
