@@ -123,6 +123,17 @@ class LinkedList {
       }
    }
 
+   //middle node
+   findMiddleNode() {
+      let Ptr = this.head;
+      let middle = 0;
+      while (Ptr !== null) {
+         Ptr = Ptr.next;
+         middle++;
+      }
+      return Math.ceil(middle / 2);
+   }
+
    //delete List
    deleteList() {
       this.head = null;

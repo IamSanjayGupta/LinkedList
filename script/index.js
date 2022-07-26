@@ -63,6 +63,14 @@ function operation() {
       case 6:
          list.reverseList();
          break;
+      case 7:
+         let mid = list.findMiddleNode();
+         if (mid) {
+            alert("Find middle node at position " + mid);
+         } else {
+            alert("First Create Linkedlist");
+         }
+         break;
       default:
          list.deleteList();
          list.createRandomList(5);
