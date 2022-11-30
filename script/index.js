@@ -3,6 +3,7 @@ import { LinkedList } from "./linkedList.js";
 let list = new LinkedList();
 let inputValue = document.getElementById("inputVal");
 let option = document.querySelector("#linkedListOption");
+
 option.addEventListener("change", () => {
   inputValue.placeholder = "";
   if (option.value == 2) {
@@ -75,6 +76,10 @@ function operation() {
       break;
     case 9:
       list.lastHalf();
+      break;
+    case 11:
+      let duplicates = list.findDuplicate();
+      console.log(duplicates);
       break;
     default:
       list.deleteList();
